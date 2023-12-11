@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>10/90 Oranında Bölünmüş Ekran</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-image: url(/img/bg.jpg);
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-left: 70px;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh; /* Ekran yüksekliğinin tamamını kapla */
+        }
+
+        .ten-percent {
+            flex: 0 0 20%; /* 10% genişlik, sıkıştırılabilir, küçültülemez */
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            background-color: #272A3A;
+        }
+
+        .ninety-percent {
+            flex: 0 0 80%; /* 90% genişlik, sıkıştırılabilir, küçültülemez */
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            display: flex; /* İkinci bölümdeki içeriği yatay sıralı yapmak için */
+        }
+
+        .sub-section {
+            flex: 1; /* Eşit genişlikte yatay sıralı bölümler */
+            padding: 20px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        ul li {
+            margin-top: 10px;
+            color: white;
+            list-style-type: none;
+            padding: 20px 20px;
+            width: 230px;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none; /* İsteğe bağlı: Bağlantı altı çizgiyi kaldırmak için */
+            height: 100%;
+            color: white;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="ten-percent">
+        <div class="logo"><img src="/img/logo.png" style="height: 110px;" alt=""></div>
+        <ul style="margin-top: 100px">
+            <li><a href="/user/dashboard">Dashboard</a></li>
+            <li><a href="/user/food" style="color: red;font-size: 35px">Food</a></li>
+            <li><a href="/user/exercises">Exercises</a></li>
+            <li><a href="/user/biometric">Biometric</a></li>
+            <li><a href="/user/about">About</a></li>
+        </ul>
+        <button style="padding: 20px 20px; background-color: green; color: white; border-color: transparent; border-radius: 20px; font-size: 18px; margin-top: 170px; margin-left: 115px">Support</button>
+    </div>
+    <div class="ninety-percent">
+        Food
+    </div>
+</div>
+</body>
+</html>

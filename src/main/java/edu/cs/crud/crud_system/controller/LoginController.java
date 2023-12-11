@@ -21,7 +21,7 @@ public class LoginController {
 
     @GetMapping("/main")
     public String main_menuHtml() {
-        return "main_menu";
+        return "index";
     }
 
     @GetMapping("/main/register")
@@ -37,7 +37,12 @@ public class LoginController {
         user.setHuman(human);
         humanService.createHuman(human);
         userService.createUser(user);
-        return "dashboard";
+        return "redirect:/indexhtml";
+    }
+
+    @GetMapping("/indexhtml")
+    public String indexHtmlHtml(){
+        return "pleaselogin";
     }
 
     @GetMapping("/main/login")
@@ -50,7 +55,7 @@ public class LoginController {
         User user= userService.findByEmailAndPassword(email,password);
 
         if(user!=null && user.getEmail().equals(email)&& user.getPassword().equals(password)){
-                return "dashboard";
+                return "user/dashboard";
         }
         return "error";
     }

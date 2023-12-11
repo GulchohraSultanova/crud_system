@@ -8,7 +8,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background-image: url(../static/bg.jpg);
+            background-image: url(/img/bg.jpg);
             margin: 0;
             padding: 0;
         }
@@ -105,8 +105,6 @@
 
         <label for="weight">Weight:</label>
         <input type="text" id="weight" name="weight" th:field="*{weight}" required>
-        <label for="bloodPressure">Blood Pressure:</label>
-        <input type="text" id="bloodPressure" name="bloodPressure" th:field="*{bloodPressure}"required>
         <button type="submit">Submit</button>
     </form>
 

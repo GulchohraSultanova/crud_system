@@ -19,7 +19,7 @@ public class Human {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name="sex",nullable = false)
+    @Column(name = "sex", nullable = false)
     private SexEnum sex;
 
     @Column(name = "birthday", nullable = false)

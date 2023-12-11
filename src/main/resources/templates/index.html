@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap" rel="stylesheet">
+    <title>Health Tracking System</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-image: url(/img/bg.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        header {
+            background-color: #27403C;
+            color: #fff;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-left: 240px;
+        }
+
+        .login-button {
+            margin-right: 200px;
+        }
+
+        .login-button a {
+            text-decoration: none;
+            padding:10px 30px;
+            background-color: #CFECE7;
+            color: #27403C;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            font-size: 19px;
+        }
+
+        .login-button a:hover {
+            background-color: #aaece1;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-left: -40px; /* Sol tarafa 40px boşluk */
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 100px; /* 40px sağ boşluk */
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ecf0f1;
+        }
+
+        .main-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: transparent;
+            color: #27403C;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 60px;
+            color: #3f6e69;
+            margin: 0;
+            padding: 5px;
+        }
+
+        .register-button {
+            margin-right: 200px;
+        }
+
+        .register-button a {
+            text-decoration: none;
+            padding:20px 50px;
+            background-color: #27403C;
+            color: #CFECE7;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            font-size: 22px;
+        }
+
+        .register-button a:hover {
+            background-color: #284e48;
+        }
+
+        .middle {
+            margin-top: 150px;
+            margin-left: 600px;
+        }
+    </style>
+
+</head>
+<body>
+
+<header>
+    <div class="logo"><img src="/img/logo.png" style="height: 110px; " alt=""></div>
+    <nav>
+        <ul>
+            <li><a href="">Forum</a></li>
+            <li><a href="">Contact us</a></li>
+            <li><a href="">About</a></li>
+        </ul>
+    </nav>
+    <div class="login-button"><a href="/main/login">LOG IN</a></div>
+</header>
+
+<section class="main-content">
+    <div class="middle">
+        <h1>Eat smarter.</h1>
+        <h1>Live better.</h1><br>
+        <h2 style="color: #3f6e69;">Track your diet, exercise, and health data.</h2>
+        <div class="register-button" style="margin-top: 70px;margin-left: 200px;"><a href="/main/register">Sign Up - It's free!</a></div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2023 Health Tracker</p>
+</footer>
+
+</body>
+</html>
