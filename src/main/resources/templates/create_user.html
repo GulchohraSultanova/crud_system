@@ -75,7 +75,7 @@
 </head>
 <body>
 
-<form action="/main/register" method="post" th:object="${user}">
+<form action="/users" method="post" th:object="${user}">
     <h2>User Information</h2>
     <label for="firstName">First Name:</label>
     <input type="text" id="firstName" name="firstName" th:field="*{firstname}" required>

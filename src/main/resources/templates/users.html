@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>10/90 Oranında Bölünmüş Ekran</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-image: url(/img/bg.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-left: 70px;
+        }
+
+        /* Add some styling to the container */
+        .container {
+            display: flex; /* Use flexbox to arrange child divs */
+        }
+
+        ul li {
+            margin-top: 10px;
+            color: white;
+            list-style-type: none;
+            padding: 20px 20px;
+            width: 230px;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            height: 100%;
+            color: white;
+            font-size: 30px;
+        }
+
+        td a {
+            font-size: 20px;
+            background: green;
+        }
+
+        .ten-percent {
+            flex: 0 0 20%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #272A3A;
+            height: 100vh;
+        }
+
+        .ninety-percent {
+            flex: 0 0 80%;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column; /* Make the content stack vertically */
+        }
+
+        /* Style the table */
+        .table {
+            width: 100%; /* Adjust the table width to fill the container */
+            margin-bottom: 1rem;
+            color: #212529;
+            font-size: 22px;
+        }
+
+        /* Style the table headers */
+        .table th {
+            padding: .75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+            text-align: left;
+            background-color: #343a40;
+            color: #fff;
+            border: 2px solid black;
+        }
+
+        /* Style the table rows */
+        .table td {
+            padding: .75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+            border: 2px solid black;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="ten-percent">
+        <div class="logo"><img src="/img/logo.png" style="height: 110px;" alt=""></div>
+        <ul style="margin-top: 100px">
+            <li><a href="#" style="color: red;font-size: 35px">Dashboard</a></li>
+        </ul>
+        <div class="col-lg-3">
+            <a th:href="@{/users/create_user}" class="btn btn-primary btn-sm mb-3"> Add User</a>
+        </div>
+        <button style="padding: 20px 20px; background-color: green; color: white; border-color: transparent;
+         border-radius: 20px; font-size: 18px; margin-top: 500px; margin-left: 115px">Support
+        </button>
+    </div>
+    <div class="ninety-percent">
+
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th> ID</th>
+                <th> First Name</th>
+                <th> Last Name</th>
+                <th> Email</th>
+                <th> Password</th>
+                <th> Sex</th>
+                <th> Birthday</th>
+                <th> Height</th>
+                <th> Weight</th>
+                <th> Number</th>
+                <th> Action</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="user: ${users}">
+                <td th:text="${user.userId}"></td>
+                <td th:text="${user.firstname}"></td>
+                <td th:text="${user.lastname}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.password}"></td>
+                <td th:text="${user.sex}"></td>
+                <td th:text="${user.birthday}"></td>
+                <td th:text="${user.height}"></td>
+                <td th:text="${user.weight}"></td>
+                <td th:text="${user.number}"></td>
+                <td>
+                    <a th:href="@{/users/edit/{id}(id=${user.userId})}"
+                       class="btn btn-primary">Update</a>
+
+                    <a style="margin-top: 10px;background: red"
+                            th:href="@{/users/{id}(id=${user.userId})}"
+                       class="btn btn-danger">Delete</a>
+
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+</body>
+</html>

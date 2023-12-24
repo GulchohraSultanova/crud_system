@@ -11,6 +11,7 @@
             padding: 0;
             height: 100%;
             background-image: url(/img/bg.jpg);
+            overflow: hidden;
         }
 
         .logo {
@@ -27,17 +28,17 @@
         .ten-percent {
             flex: 0 0 20%; /* 10% genişlik, sıkıştırılabilir, küçültülemez */
             padding: 20px;
-            border: 1px solid #ccc;
             box-sizing: border-box;
             background-color: #272A3A;
         }
 
         .ninety-percent {
             flex: 0 0 80%; /* 90% genişlik, sıkıştırılabilir, küçültülemez */
-            padding: 20px;
             border: 1px solid #ccc;
             box-sizing: border-box;
             display: flex; /* İkinci bölümdeki içeriği yatay sıralı yapmak için */
+            justify-content: center;
+            padding-top: 50px;
         }
 
         .sub-section {
@@ -64,6 +65,54 @@
             color: white;
             font-size: 30px;
         }
+
+        /* Yeni eklenen stiller */
+        .field {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            font-size: 18px;
+            width: 100%;
+            border: 1px solid grey;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 8px 17px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .food-image {
+            width: 100px; /* Adjust the maximum width as needed */
+            height: 100px; /* Adjust the maximum height as needed */
+            margin: 20px 20px;
+            float: left; /* Add this to make the image float to the left */
+        }
+
+        .input-section {
+            display: inline-block;
+        }
+
+        .button-section {
+            display: inline-block;
+            margin-top: 10px; /* Adjust the margin as needed */
+        }
+
+
     </style>
 </head>
 <body>
@@ -75,13 +124,92 @@
             <li><a href="/user/food">Food</a></li>
             <li><a href="/user/exercises" style="color: red;font-size: 35px">Exercises</a></li>
             <li><a href="/user/biometric">Biometric</a></li>
-            <li><a href="/user/about">About</a></li>
+            <li><a href="/user/about/1">Account</a></li>
         </ul>
-        <button style="padding: 20px 20px; background-color: green; color: white; border-color: transparent; border-radius: 20px; font-size: 18px; margin-top: 170px; margin-left: 115px">Support</button>
+        <button style="padding: 20px 20px; background-color: green; color: white; border-color: transparent; border-radius: 20px; font-size: 18px; margin-top: 100px; margin-left: 115px">
+            Support
+        </button>
     </div>
     <div class="ninety-percent">
-        Exercise
+        <div class="container" style="display: flex; flex-direction: column;">
+            <!-- Flex yönlendirmeyi sütun (column) olarak değiştirin -->
+
+            <div class="field">
+                <img src="/img/swimming.webp" alt="Swim" class="food-image">
+                <div class="input-section">
+                    <label for="food1"><h2>Swimming (Minute)</h2></label>
+                    <input type="number" id="food1" value="0" readonly>
+                </div>
+                <div class="button-section">
+                    <button onclick="changeCalories('food1', '+', 5)">+</button>
+                    <button onclick="changeCalories('food1', '-', 5)">-</button>
+                </div>
+            </div>
+            <div class="field">
+                <img src="/img/running.jpg" alt="Running" class="food-image">
+                <div class="input-section">
+                    <label for="food1"><h2>Running (Minute)</h2></label>
+                    <input type="number" id="food2" value="0" readonly>
+                </div>
+                <div class="button-section">
+                    <button onclick="changeCalories('food2', '+', 5)">+</button>
+                    <button onclick="changeCalories('food2', '-', 5)">-</button>
+                </div>
+            </div>
+            <div class="field">
+                <img src="/img/pliates.jpg" alt="Pilates" class="food-image">
+                <div class="input-section">
+                    <label for="food1"><h2>Pilates (Minute)</h2></label>
+                    <input type="number" id="food3" value="0" readonly>
+                </div>
+                <div class="button-section">
+                    <button onclick="changeCalories('food3', '+', 5)">+</button>
+                    <button onclick="changeCalories('food3', '-', 5)">-</button>
+                </div>
+            </div>
+            <div class="field">
+                <img src="/img/cycling.jpg" alt="Cycling" class="food-image">
+                <div class="input-section">
+                    <label for="food1"><h2>Cycling (Minute)</h2></label>
+                    <input type="number" id="food4" value="0" readonly>
+                </div>
+                <div class="button-section">
+                    <button onclick="changeCalories('food4', '+', 5)">+</button>
+                    <button onclick="changeCalories('food4', '-', 5)">-</button>
+                </div>
+            </div>
+            <div class="field">
+                <label for="totalCalories"><h2>Total burned calories:</h2></label>
+                <input type="number" id="totalCalories" value="0" readonly>
+            </div>
+        </div>
     </div>
+    <script>
+        function changeCalories(id, operator, value) {
+            var inputElement = document.getElementById(id);
+            var currentCalories = parseInt(inputElement.value) || 0;
+
+            if (operator === '+') {
+                inputElement.value = currentCalories + value;
+            } else if (operator === '-') {
+                inputElement.value = Math.max(0, currentCalories - value);
+            }
+
+            updateTotalCalories();
+        }
+
+        function updateTotalCalories() {
+            var food1 = parseInt(document.getElementById('food1').value) || 0;
+            var food2 = parseInt(document.getElementById('food2').value) || 0;
+            var food3 = parseInt(document.getElementById('food3').value) || 0;
+            var food4 = parseInt(document.getElementById('food4').value) || 0;
+
+            var totalCalories = food1 * 105 + food2 * 300 + food3 * 285 + food4 * 200;
+
+            document.getElementById('totalCalories').value = totalCalories;
+        }
+    </script>
+
 </div>
 </body>
 </html>

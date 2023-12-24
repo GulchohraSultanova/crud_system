@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +11,8 @@
             padding: 0;
             height: 100%;
             background-image: url(/img/bg.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         .logo {
@@ -27,7 +29,6 @@
         .ten-percent {
             flex: 0 0 20%; /* 10% genişlik, sıkıştırılabilir, küçültülemez */
             padding: 20px;
-            border: 1px solid #ccc;
             box-sizing: border-box;
             background-color: #272A3A;
         }
@@ -35,7 +36,6 @@
         .ninety-percent {
             flex: 0 0 80%; /* 90% genişlik, sıkıştırılabilir, küçültülemez */
             padding: 20px;
-            border: 1px solid #ccc;
             box-sizing: border-box;
             display: flex; /* İkinci bölümdeki içeriği yatay sıralı yapmak için */
         }
@@ -43,7 +43,7 @@
         .sub-section {
             flex: 1; /* Eşit genişlikte yatay sıralı bölümler */
             padding: 20px;
-            border: 1px solid black;
+            border-right: 2px solid darkgray;
             box-sizing: border-box;
         }
 
@@ -64,6 +64,36 @@
             color: white;
             font-size: 30px;
         }
+
+        .food-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .food-table td {
+            padding: 10px;
+            border: 2px solid #272A3A;
+            text-align: center;
+        }
+
+        .food-image {
+            max-width: 100px;
+            max-height: 100px;
+            margin-right: 10px;
+        }
+
+        .food-name {
+            font-weight: bold;
+            font-size: 23px;
+            color: black;
+            text-align: center;
+        }
+
+        .calories {
+            font-size: 23px;
+            color: black;
+        }
+
     </style>
 </head>
 <body>
@@ -75,26 +105,140 @@
             <li><a href="/user/food">Food</a></li>
             <li><a href="/user/exercises">Exercises</a></li>
             <li><a href="/user/biometric">Biometric</a></li>
-            <li><a href="/user/about">About</a></li>
+            <li><a href="/user/about/1">Account</a></li>
+
         </ul>
         <button style="padding: 20px 20px; background-color: green; color: white; border-color: transparent;
-         border-radius: 20px; font-size: 18px; margin-top: 170px; margin-left: 115px">Support</button>
+         border-radius: 20px; font-size: 18px; margin-top: 100px; margin-left: 115px">Support
+        </button>
     </div>
     <div class="ninety-percent">
         <div class="sub-section">
             <!-- İlk Yatay Div -->
-            <p>İlk Yatay Bölüm</p>
-            <!-- İlk bölüm içeriği buraya gelecek -->
+            <h1 style="color: black;">Food List</h1>
+            <table class="food-table">
+                <tr>
+                    <td style="font-weight: bold; font-size:23px;">Photo</td>
+                    <td>
+
+                        <span class="food-name">Food name</span>
+                    </td>
+                    <td class="calories">Calories</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/banana.jpg" class="food-image"></td>
+                    <td>
+
+                        <span class="food-name">Banana</span>
+                    </td>
+                    <td class="calories">105 kcal</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/chicken_wings.jpg" class="food-image"></td>
+                    <td>
+                        <span class="food-name">Chicken Wings</span>
+                    </td>
+                    <td class="calories">210 kcal</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/pizza.jpg" class="food-image"></td>
+                    <td>
+                        <span class="food-name">Pizza</span>
+                    </td>
+                    <td class="calories">285 kcal</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/strawberry.jpg" class="food-image"></td>
+                    <td>
+                        <span class="food-name">Strawberry</span>
+                    </td>
+                    <td class="calories">4 kcal</td>
+                </tr>
+            </table>
+
         </div>
         <div class="sub-section">
-            <!-- İkinci Yatay Div -->
-            <p>İkinci Yatay Bölüm</p>
-            <!-- İkinci bölüm içeriği buraya gelecek -->
+            <h1 style="color: black;">Activity List</h1>
+            <table class="food-table">
+                <tr>
+                    <td style="font-weight: bold; font-size:23px;">Photo</td>
+                    <td>
+
+                        <span class="food-name">Activity name</span>
+                    </td>
+                    <td class="calories">Calories</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/swimming.webp" class="food-image"></td>
+                    <td>
+                        <span class="food-name">Swimming</span>
+                    </td>
+                    <td class="calories">105 kcal</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/running.jpg" class="food-image"></td>
+                    <td>
+                        <span class="food-name">Running</span>
+                    </td>
+                    <td class="calories">300 kcal</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/pliates.jpg" class="food-image"></td>
+                    <td>
+                        <span class="food-name">Pilates</span>
+                    </td>
+                    <td class="calories">285 kcal</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/cycling.jpg" class="food-image"></td>
+                    <td>
+                        <span class="food-name">Cycling</span>
+                    </td>
+                    <td class="calories">200 kcal</td>
+                </tr>
+            </table>
+
         </div>
-        <div class="sub-section">
-            <!-- Üçüncü Yatay Div -->
-            <p>Üçüncü Yatay Bölüm</p>
-            <!-- Üçüncü bölüm içeriği buraya gelecek -->
+        <div class="sub-section" style="border-right: 1px solid transparent">
+            <h1 style="color: black;">Biometric List</h1>
+            <table class="food-table">
+                <tr>
+                    <td style="font-weight: bold; font-size:23px;">Photo</td>
+                    <td>
+
+                        <span class="food-name">Biometric name</span>
+                    </td>
+                    <td class="calories">Normal</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/bloodp.webp" class="food-image"></td>
+                    <td>
+                        <span class="food-name">Blood Pressure</span>
+                    </td>
+                    <td class="calories">120/80</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/heartrate.png" class="food-image"></td>
+                    <td>
+                        <span class="food-name">Heart Rate</span>
+                    </td>
+                    <td class="calories">84 p/m</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/sleep.jpg" class="food-image"></td>
+                    <td>
+                        <span class="food-name">Sleep</span>
+                    </td>
+                    <td class="calories">7-9 hours</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/bodytemp.jpg" class="food-image"></td>
+                    <td>
+                        <span class="food-name">Body Temperature</span>
+                    </td>
+                    <td class="calories">36.5-37 °C</td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>

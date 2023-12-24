@@ -13,6 +13,17 @@
             background-image: url(/img/bg.jpg);
         }
 
+
+        p {
+            margin: 0;
+            padding: 8px;
+        }
+
+        span {
+            font-weight: bold;
+            color: #333;
+        }
+
         .logo {
             font-size: 1.5em;
             font-weight: bold;
@@ -27,24 +38,72 @@
         .ten-percent {
             flex: 0 0 20%; /* 10% genişlik, sıkıştırılabilir, küçültülemez */
             padding: 20px;
-            border: 1px solid #ccc;
             box-sizing: border-box;
             background-color: #272A3A;
         }
 
         .ninety-percent {
-            flex: 0 0 80%; /* 90% genişlik, sıkıştırılabilir, küçültülemez */
-            padding: 20px;
-            border: 1px solid #ccc;
+            flex: 0 0 80%;
+            padding: 40px; /* Increase the padding for more space around the content */
             box-sizing: border-box;
-            display: flex; /* İkinci bölümdeki içeriği yatay sıralı yapmak için */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .sub-section {
-            flex: 1; /* Eşit genişlikte yatay sıralı bölümler */
-            padding: 20px;
-            border: 1px solid black;
+        .user-info {
+            background-color: #BCE9E3;
+            border-radius: 8px;
+            padding: 40px; /* Increase the padding for more space around the content */
+            width: 700px; /* Adjust the max-width if needed */
+            text-align: center;
+        }
+
+        .editable {
+            position: relative; /* Position relative for absolute positioning of the eye icon */
+            margin-top: 30px;
+        }
+
+
+        #togglePassword {
+            padding-top: 20px;
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .editable p {
+            display: none;
+        }
+
+        .editable input {
+            display: block;
+            width: 100%;
+            padding: 4px;
+            margin-bottom: 8px;
             box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Roboto', sans-serif;
+            height: 30px;
+            font-size: 15px;
+            background: #DCF0ED;
+        }
+
+        .editable button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .editable button:hover {
+            background-color: #45a049;
         }
 
         ul li {
@@ -64,6 +123,14 @@
             color: white;
             font-size: 30px;
         }
+
+        label {
+            font-size: 20px;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
     </style>
 </head>
 <body>
@@ -75,13 +142,79 @@
             <li><a href="/user/food">Food</a></li>
             <li><a href="/user/exercises">Exercises</a></li>
             <li><a href="/user/biometric">Biometric</a></li>
-            <li><a href="/user/about" style="color: red;font-size: 35px">About</a></li>
+            <li><a href="/user/about/1" style="color: red;font-size: 35px">Account</a></li>
         </ul>
-        <button style="padding: 20px 20px; background-color: green; color: white; border-color: transparent; border-radius: 20px; font-size: 18px; margin-top: 170px; margin-left: 115px">Support</button>
+        <button style="padding: 20px 20px; background-color: green; color: white; border-color: transparent; border-radius: 20px; font-size: 18px; margin-top: 100px; margin-left: 115px">
+            Support
+        </button>
     </div>
     <div class="ninety-percent">
-        About
+        <div class="user-info">
+            <h1>Account Information</h1>
+
+            <div class="editable">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" th:value="${user.firstname}" readonly>
+            </div>
+
+            <div class="editable">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" th:value="${user.lastname}" readonly>
+            </div>
+
+            <div class="editable">
+                <label for="email">Email:</label>
+                <input type="text" id="email" th:value="${user.email}" readonly>
+            </div>
+
+            <div class="editable">
+                <label for="password">Password:</label>
+                <input type="password" id="password" th:value="${user.password}" readonly>
+                <span id="togglePassword" onclick="togglePassword()">👁️</span>
+            </div>
+
+            <div class="editable">
+                <label for="sex">Sex:</label>
+                <input type="text" id="sex" th:value="${user.sex}" readonly>
+            </div>
+
+            <div class="editable">
+                <label for="birthday">Birthday:</label>
+                <input type="text" id="birthday" th:value="${user.birthday}" readonly>
+            </div>
+
+            <div class="editable">
+                <label for="height">Height:</label>
+                <input type="text" id="height" th:value="${user.height}" readonly>
+            </div>
+
+            <div class="editable">
+                <label for="weight">Weight:</label>
+                <input type="text" id="weight" th:value="${user.weight}" readonly>
+            </div>
+
+            <div class="editable">
+                <label for="number">Number:</label>
+                <input type="text" id="number" th:value="${user.number}" readonly>
+            </div>
+
+        </div>
     </div>
+    <script>
+        function togglePassword() {
+            var passwordInput = document.getElementById("password");
+            var toggleButton = document.getElementById("togglePassword");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleButton.textContent = "👁️";
+            } else {
+                passwordInput.type = "password";
+                toggleButton.textContent = "👁️";
+            }
+        }
+
+    </script>
 </div>
 </body>
 </html>

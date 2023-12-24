@@ -13,8 +13,9 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
+
     @Override
-    public List<User> getAllUser() {
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
@@ -29,7 +30,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByEmailAndPassword(String email, String password) {
-        return userRepository.findByEmailAndPassword(email,password);
+    public void updateUser(User user) {
+        userRepository.save(user);
     }
+
+    @Override
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public User findByEmailAndPassword(String email, String password) {
+        return userRepository.findByEmailAndPassword(email, password);
+    }
+
+
 }
